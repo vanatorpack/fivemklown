@@ -30,10 +30,38 @@
             position: relative;
         }
 
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff0000;
+            color: #000;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #ff6666;
+            transform: scale(1.1);
+        }
+
         .title {
             font-size: 3rem;
             margin-bottom: 10px;
             color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 10px #ff0000; }
+            to { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
         }
 
         .subtitle {
@@ -52,6 +80,11 @@
 
         .image-card {
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: scale(1.05);
         }
 
         .image-card img {
@@ -77,6 +110,12 @@
             margin-bottom: 20px;
             color: #ff0000;
             text-align: center;
+            text-shadow: 0 0 5px #ff0000;
+            transition: all 0.3s ease;
+        }
+
+        .section-title:hover {
+            text-shadow: 0 0 10px #ff0000, 0 0 15px #ff0000;
         }
 
         .section-text {
@@ -134,6 +173,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <button class="close-btn" onclick="window.close()">×</button>
             <h1 class="title">AHMET KLOWN</h1>
             <p class="subtitle">FIVEM KLOWN - ZENGİN ZÜBBE</p>
         </div>
@@ -191,5 +231,21 @@
             <p>Bu site denizloki tarafından ahmete şaka amaçlı hazırlanmıştır vanator packe gelin</p>
         </div>
     </div>
+
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="SpotiDownloader.com - ascension - sho.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('backgroundMusic');
+            
+            audio.volume = 0.3;
+            
+            audio.play().catch(function(error) {
+                console.log('Audio autoplay prevented:', error);
+            });
+        });
+    </script>
 </body>
 </html>
