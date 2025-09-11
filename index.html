@@ -58,13 +58,6 @@
             font-size: 3rem;
             margin-bottom: 10px;
             color: #ff0000;
-            text-shadow: 0 0 10px #ff0000;
-            animation: titleGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes titleGlow {
-            from { text-shadow: 0 0 10px #ff0000; }
-            to { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
         }
 
         .subtitle {
@@ -113,12 +106,6 @@
             margin-bottom: 20px;
             color: #ff0000;
             text-align: center;
-            text-shadow: 0 0 5px #ff0000;
-            transition: all 0.3s ease;
-        }
-
-        .section-title:hover {
-            text-shadow: 0 0 10px #ff0000, 0 0 15px #ff0000;
         }
 
         .section-text {
@@ -279,20 +266,12 @@
                         document.getElementById('visitCount').textContent = viewText;
                         document.getElementById('headerVisitCount').textContent = viewText;
                     } else {
-                        let views = localStorage.getItem('siteViews') || 0;
-                        views = parseInt(views) + 1;
-                        localStorage.setItem('siteViews', views);
-                        const viewText = views.toLocaleString();
-                        document.getElementById('visitCount').textContent = viewText;
-                        document.getElementById('headerVisitCount').textContent = viewText;
+                        document.getElementById('visitCount').textContent = 'GitHub API Hatası';
+                        document.getElementById('headerVisitCount').textContent = 'GitHub API Hatası';
                     }
                 } catch (error) {
-                    let views = localStorage.getItem('siteViews') || 0;
-                    views = parseInt(views) + 1;
-                    localStorage.setItem('siteViews', views);
-                    const viewText = views.toLocaleString();
-                    document.getElementById('visitCount').textContent = viewText;
-                    document.getElementById('headerVisitCount').textContent = viewText;
+                    document.getElementById('visitCount').textContent = 'Bağlantı Hatası';
+                    document.getElementById('headerVisitCount').textContent = 'Bağlantı Hatası';
                 }
             }
 
