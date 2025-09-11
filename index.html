@@ -211,7 +211,7 @@
         </div>
     </div>
 
-    <audio id="backgroundMusic" autoplay loop>
+    <audio id="backgroundMusic" loop>
         <source src="SpotiDownloader.com - ascension - sho.mp3" type="audio/mpeg">
     </audio>
 
@@ -221,17 +221,18 @@
             
             audio.volume = 0.5;
             
-            document.addEventListener('click', function() {
+            function playMusic() {
                 audio.play().catch(function(error) {
                     console.log('Audio play error:', error);
                 });
-            }, { once: true });
+            }
             
-            document.addEventListener('touchstart', function() {
-                audio.play().catch(function(error) {
-                    console.log('Audio play error:', error);
-                });
-            }, { once: true });
+            document.addEventListener('click', playMusic, { once: true });
+            document.addEventListener('touchstart', playMusic, { once: true });
+            
+            setTimeout(function() {
+                playMusic();
+            }, 1000);
         });
     </script>
 </body>
