@@ -161,6 +161,15 @@
             color: #ff6666;
         }
     </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VJWZFLKMZJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VJWZFLKMZJ');
+    </script>
 </head>
 <body>
     <div class="container">
@@ -253,32 +262,19 @@
                 playMusic();
             }, 1000);
 
-            async function updateVisitCount() {
-                try {
-                    const response = await fetch('https://api.github.com/repos/denizlokii/fivemklown/traffic/views', {
-                        headers: {
-                            'Accept': 'application/vnd.github.v3+json',
-                            'Authorization': 'token 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'
-                        }
+            function trackVisit() {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'page_view', {
+                        page_title: 'AHMET KLOWN - FIVEM KLOWN',
+                        page_location: window.location.href
                     });
-                    
-                    if (response.ok) {
-                        const data = await response.json();
-                        const totalViews = data.count || 0;
-                        const viewText = totalViews.toLocaleString();
-                        document.getElementById('visitCount').textContent = viewText;
-                        document.getElementById('headerVisitCount').textContent = viewText;
-                    } else {
-                        document.getElementById('visitCount').textContent = '0';
-                        document.getElementById('headerVisitCount').textContent = '0';
-                    }
-                } catch (error) {
-                    document.getElementById('visitCount').textContent = '0';
-                    document.getElementById('headerVisitCount').textContent = '0';
                 }
+                
+                document.getElementById('visitCount').textContent = 'Google Analytics';
+                document.getElementById('headerVisitCount').textContent = 'Google Analytics';
             }
 
-            updateVisitCount();
+            trackVisit();
         });
     </script>
 </body>
