@@ -263,7 +263,7 @@
                 playMusic();
             }, 1000);
 
-            function trackVisit() {
+            async function trackVisit() {
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'page_view', {
                         page_title: 'AHMET KLOWN - FIVEM KLOWN',
@@ -271,8 +271,26 @@
                     });
                 }
                 
-                document.getElementById('visitCount').textContent = 'Google Analytics';
-                document.getElementById('headerVisitCount').textContent = 'Google Analytics';
+                try {
+                    const response = await fetch('https://api.github.com/repos/denizlokii/fivemklown/traffic/views', {
+                        headers: {
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        const totalViews = data.count || 0;
+                        document.getElementById('visitCount').textContent = totalViews.toLocaleString();
+                        document.getElementById('headerVisitCount').textContent = totalViews.toLocaleString();
+                    } else {
+                        document.getElementById('visitCount').textContent = '0';
+                        document.getElementById('headerVisitCount').textContent = '0';
+                    }
+                } catch (error) {
+                    document.getElementById('visitCount').textContent = '0';
+                    document.getElementById('headerVisitCount').textContent = '0';
+                }
             }
 
             trackVisit();
