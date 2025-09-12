@@ -195,14 +195,40 @@
         }
     </style>
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VJWZFLKMZJ"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('Bu site korumalıdır!');
+            return false;
+        });
 
-      gtag('config', 'G-VJWZFLKMZJ');
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.key === 's') ||
+                (e.ctrlKey && e.key === 'a')) {
+                e.preventDefault();
+                alert('Bu site korumalıdır!');
+                return false;
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+                alert('Bu site korumalıdır!');
+                return false;
+            }
+        });
+
+        document.onselectstart = function() {
+            return false;
+        };
+
+        document.ondragstart = function() {
+            return false;
+        };
     </script>
 </head>
 <body>
@@ -227,6 +253,7 @@
         </div>
 
         <div class="content-section">
+            <h2 class="section-title">EN İYİ ARKADAŞLARIM</h2>
             <div class="image-gallery">
                 <div class="image-card">
                     <img src="cagri.jpg" alt="Cagri">
@@ -272,7 +299,7 @@
         <div class="content-section">
             <h2 class="section-title">TEŞEKKÜRLERİM</h2>
             <p class="section-text">
-                Bu zamana kadar yanımda olan tüm vanator pack yetkilileri özellikle oç jef ve denizloki'mi çok seviyorum teşekkürlerimi iletiyorum..
+                Bu zamana kadar yanımda olan tüm vanator pack yetkilileri özellikle oç jef ve denizi çok seviyorum teşekkürlerimi iletiyorum
             </p>
         </div>
 
