@@ -989,7 +989,7 @@
             }
 
 
-            
+            // Enhanced Sound Visualizer
             function enhanceSoundVisualizer() {
                 const soundBars = document.querySelectorAll('.sound-bar');
                 
@@ -1002,17 +1002,9 @@
                 }, 300);
             }
 
-            
-            let konamiCode = [];
-            const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
-            
+            // L Key Easter Egg
             document.addEventListener('keydown', function(e) {
-                konamiCode.push(e.keyCode);
-                if (konamiCode.length > konamiSequence.length) {
-                    konamiCode.shift();
-                }
-                
-                if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                if (e.keyCode === 76 || e.key === 'l' || e.key === 'L') {
                     activateSecretMode();
                 }
             });
@@ -1020,7 +1012,7 @@
             function activateSecretMode() {
                 document.body.style.filter = 'hue-rotate(180deg) saturate(2)';
                 
-                
+                // Create explosion effect
                 for (let i = 0; i < 50; i++) {
                     const explosion = document.createElement('div');
                     explosion.style.position = 'fixed';
@@ -1050,7 +1042,7 @@
                 }, 5000);
             }
 
-            
+            // Initialize all effects
             function initializeEffects() {
                 createParticles();
                 createMatrixRain();
@@ -1060,11 +1052,11 @@
                 window.addEventListener('scroll', handleScrollAnimations);
                 document.addEventListener('mousemove', handleMouseMovement);
                 
-               
+                // Initial animation trigger
                 setTimeout(handleScrollAnimations, 100);
             }
 
-            
+            // Legacy init function for compatibility
             function init() {
                 initializeEffects();
             }
@@ -1081,7 +1073,7 @@
                 document.getElementById('headerVisitCount').textContent = '2,203';
             }
 
-            
+            // Start everything
             trackVisit();
             init();
         });
