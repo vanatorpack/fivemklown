@@ -142,9 +142,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            color: var(--primary-red); 
             text-shadow: 0 0 30px rgba(255, 0, 64, 0.5);
             animation: titleGlow 3s ease-in-out infinite alternate;
             position: relative;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .title::before {
@@ -156,6 +159,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            color: var(--accent-gold); 
             animation: titleShift 4s ease-in-out infinite;
             z-index: -1;
         }
@@ -517,7 +521,133 @@
             }
         }
 
-        /* Scrollbar Styling */
+       
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+        }
+
+        .matrix-column {
+            position: absolute;
+            top: -100%;
+            color: var(--primary-red);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 14px;
+            animation: matrixFall linear infinite;
+        }
+
+        @keyframes matrixFall {
+            to { top: 100%; }
+        }
+
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darker-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 1s ease-out;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: var(--primary-red);
+            font-family: 'Orbitron', monospace;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255, 0, 64, 0.1);
+            border-left: 4px solid var(--primary-red);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            animation: loadingPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loadingPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 0, 64, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        
+
+        
+        .sound-visualizer {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: end;
+            gap: 2px;
+            z-index: 1000;
+        }
+
+        .sound-bar {
+            width: 3px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+            animation: soundWave 1s ease-in-out infinite;
+        }
+
+        @keyframes soundWave {
+            0%, 100% { height: 10px; }
+            50% { height: 30px; }
+        }
+
+        /* Explosion Animation for Easter Egg */
+        @keyframes explode {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) translate(var(--dx, 0), var(--dy, 0)) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        
         ::-webkit-scrollbar {
             width: 12px;
         }
@@ -573,8 +703,34 @@
     </script>
 </head>
 <body>
-    <!-- Particle System -->
+    
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">AHMET KLOWN YÜKLENİYOR...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="matrix-rain" id="matrixRain"></div>
+    
+   
+
+    
     <div class="particles" id="particles"></div>
+
+    
+    <div class="sound-visualizer" id="soundVisualizer">
+        <div class="sound-bar" style="animation-delay: 0s;"></div>
+        <div class="sound-bar" style="animation-delay: 0.1s;"></div>
+        <div class="sound-bar" style="animation-delay: 0.2s;"></div>
+        <div class="sound-bar" style="animation-delay: 0.3s;"></div>
+        <div class="sound-bar" style="animation-delay: 0.4s;"></div>
+        <div class="sound-bar" style="animation-delay: 0.5s;"></div>
+    </div>
 
     <div class="container">
         <div class="visitor-counter">
@@ -597,7 +753,7 @@
         </div>
 
         <div class="content-section">
-            <h2 class="section-title">EN İYİ ARKADAŞLARIM</h2>
+            <h2 class="section-title">GERCEK DOSTLARIM</h2>
             <div class="image-gallery">
                 <div class="image-card">
                     <img src="cagri.jpg" alt="Cagri">
@@ -610,7 +766,7 @@
                 </div>
             </div>
             <p class="section-text">
-                en iyi dostlarım çağrı efe hamzadır
+                En iyi dostlarım çağrı efe hamzadır.
             </p>
         </div>
 
@@ -680,11 +836,34 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const audio = document.getElementById('backgroundMusic');
+            const loadingScreen = document.getElementById('loadingScreen');
+            const progressFill = document.getElementById('progressFill');
             
-            audio.volume = 0.5;
+            audio.volume = 0.3;
+            
+            
+            let progress = 0;
+            const loadingInterval = setInterval(() => {
+                progress += Math.random() * 15 + 5;
+                if (progress > 100) progress = 100;
+                
+                progressFill.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(loadingInterval);
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                            initializeEffects();
+                        }, 1000);
+                    }, 500);
+                }
+            }, 200);
             
             function playMusic() {
                 audio.play().catch(function(error) {
+                    console.log('Müzik çalınamadı:', error);
                 });
             }
             
@@ -693,13 +872,12 @@
             welcomeOverlay.addEventListener('click', function() {
                 welcomeOverlay.style.display = 'none';
                 playMusic();
-                createParticles();
             });
             
             document.addEventListener('click', playMusic, { once: true });
             document.addEventListener('touchstart', playMusic, { once: true });
 
-         
+            
             function createParticles() {
                 const particlesContainer = document.getElementById('particles');
                 const particleCount = 50;
@@ -708,7 +886,7 @@
                     const particle = document.createElement('div');
                     particle.className = 'particle';
                     
-                   
+                    
                     particle.style.left = Math.random() * 100 + '%';
                     particle.style.top = Math.random() * 100 + '%';
                     
@@ -716,7 +894,7 @@
                     particle.style.animationDelay = Math.random() * 6 + 's';
                     particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
                     
-                   
+                    
                     const size = Math.random() * 3 + 1;
                     particle.style.width = size + 'px';
                     particle.style.height = size + 'px';
@@ -729,7 +907,7 @@
                 }
             }
 
-            
+           
             function handleScrollAnimations() {
                 const sections = document.querySelectorAll('.content-section');
                 const imageCards = document.querySelectorAll('.image-card');
@@ -753,7 +931,7 @@
                 });
             }
 
-            
+           
             function handleMouseMovement(e) {
                 const particles = document.querySelectorAll('.particle');
                 const mouseX = e.clientX / window.innerWidth;
@@ -768,7 +946,7 @@
                 });
             }
 
-           
+            
             function enhanceButtons() {
                 const buttons = document.querySelectorAll('.cta-button');
                 
@@ -784,7 +962,7 @@
                     });
                     
                     button.addEventListener('click', function() {
-                       
+                  
                         const ripple = document.createElement('div');
                         ripple.style.position = 'absolute';
                         ripple.style.borderRadius = '50%';
@@ -807,7 +985,7 @@
                 });
             }
 
-            
+         
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes ripple {
@@ -820,15 +998,107 @@
             document.head.appendChild(style);
 
             
-            function init() {
+            function createMatrixRain() {
+                const matrixContainer = document.getElementById('matrixRain');
+                const characters = '01AHMETKLOWN★♦♠♣';
+                const columns = Math.floor(window.innerWidth / 20);
+                
+                for (let i = 0; i < columns; i++) {
+                    const column = document.createElement('div');
+                    column.className = 'matrix-column';
+                    column.style.left = i * 20 + 'px';
+                    column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    column.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    let text = '';
+                    for (let j = 0; j < 20; j++) {
+                        text += characters[Math.floor(Math.random() * characters.length)] + '<br>';
+                    }
+                    column.innerHTML = text;
+                    
+                    matrixContainer.appendChild(column);
+                }
+            }
+
+
+           
+            function enhanceSoundVisualizer() {
+                const soundBars = document.querySelectorAll('.sound-bar');
+                
+                setInterval(() => {
+                    soundBars.forEach((bar, index) => {
+                        const height = Math.random() * 40 + 10;
+                        bar.style.height = height + 'px';
+                        bar.style.animationDelay = (index * 0.1) + 's';
+                    });
+                }, 300);
+            }
+
+            
+            let konamiCode = [];
+            const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+            
+            document.addEventListener('keydown', function(e) {
+                konamiCode.push(e.keyCode);
+                if (konamiCode.length > konamiSequence.length) {
+                    konamiCode.shift();
+                }
+                
+                if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                    activateSecretMode();
+                }
+            });
+
+            function activateSecretMode() {
+                document.body.style.filter = 'hue-rotate(180deg) saturate(2)';
+                
+               
+                for (let i = 0; i < 50; i++) {
+                    const explosion = document.createElement('div');
+                    explosion.style.position = 'fixed';
+                    explosion.style.left = '50%';
+                    explosion.style.top = '50%';
+                    explosion.style.width = '4px';
+                    explosion.style.height = '4px';
+                    explosion.style.background = '#ffd700';
+                    explosion.style.borderRadius = '50%';
+                    explosion.style.pointerEvents = 'none';
+                    explosion.style.zIndex = '9999';
+                    
+                    const angle = (i / 50) * Math.PI * 2;
+                    const velocity = Math.random() * 300 + 100;
+                    
+                    explosion.style.animation = `
+                        explode 2s ease-out forwards
+                    `;
+                    
+                    document.body.appendChild(explosion);
+                    
+                    setTimeout(() => explosion.remove(), 2000);
+                }
+                
+                setTimeout(() => {
+                    document.body.style.filter = 'none';
+                }, 5000);
+            }
+
+            // Initialize all effects
+            function initializeEffects() {
                 createParticles();
+                createMatrixRain();
+                enhanceSoundVisualizer();
                 enhanceButtons();
                 
                 window.addEventListener('scroll', handleScrollAnimations);
                 document.addEventListener('mousemove', handleMouseMovement);
                 
-                
+               
                 setTimeout(handleScrollAnimations, 100);
+            }
+
+          
+            function init() {
+                initializeEffects();
             }
 
             function trackVisit() {
@@ -843,7 +1113,7 @@
                 document.getElementById('headerVisitCount').textContent = '2,203';
             }
 
-          
+            // Start everything
             trackVisit();
             init();
         });
