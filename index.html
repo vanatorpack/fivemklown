@@ -150,19 +150,6 @@
             text-transform: uppercase;
         }
 
-        .title::before {
-            content: 'AHMET KLOWN';
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: var(--accent-gold); 
-            animation: titleShift 4s ease-in-out infinite;
-            z-index: -1;
-        }
 
         @keyframes titleGlow {
             from { 
@@ -173,13 +160,6 @@
                 text-shadow: 0 0 50px rgba(255, 0, 64, 0.8), 0 0 80px rgba(255, 0, 64, 0.3);
                 transform: scale(1.02);
             }
-        }
-
-        @keyframes titleShift {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            25% { transform: translateX(2px) translateY(-2px); }
-            50% { transform: translateX(-2px) translateY(2px); }
-            75% { transform: translateX(2px) translateY(2px); }
         }
 
         .subtitle {
@@ -610,9 +590,6 @@
             transition: width 0.3s ease;
         }
 
-        
-
-        
         .sound-visualizer {
             position: fixed;
             bottom: 20px;
@@ -714,15 +691,9 @@
         </div>
     </div>
 
-    
     <div class="matrix-rain" id="matrixRain"></div>
-    
-   
-
-    
     <div class="particles" id="particles"></div>
 
-    
     <div class="sound-visualizer" id="soundVisualizer">
         <div class="sound-bar" style="animation-delay: 0s;"></div>
         <div class="sound-bar" style="animation-delay: 0.1s;"></div>
@@ -877,7 +848,7 @@
             document.addEventListener('click', playMusic, { once: true });
             document.addEventListener('touchstart', playMusic, { once: true });
 
-            
+            // Particle System
             function createParticles() {
                 const particlesContainer = document.getElementById('particles');
                 const particleCount = 50;
@@ -886,7 +857,7 @@
                     const particle = document.createElement('div');
                     particle.className = 'particle';
                     
-                    
+                    // Random positioning
                     particle.style.left = Math.random() * 100 + '%';
                     particle.style.top = Math.random() * 100 + '%';
                     
@@ -962,8 +933,7 @@
                     });
                     
                     button.addEventListener('click', function() {
-                  
-                        const ripple = document.createElement('div');
+                      const ripple = document.createElement('div');
                         ripple.style.position = 'absolute';
                         ripple.style.borderRadius = '50%';
                         ripple.style.background = 'rgba(255, 255, 255, 0.6)';
@@ -985,8 +955,7 @@
                 });
             }
 
-         
-            const style = document.createElement('style');
+              const style = document.createElement('style');
             style.textContent = `
                 @keyframes ripple {
                     to {
@@ -997,8 +966,7 @@
             `;
             document.head.appendChild(style);
 
-            
-            function createMatrixRain() {
+              function createMatrixRain() {
                 const matrixContainer = document.getElementById('matrixRain');
                 const characters = '01AHMETKLOWN★♦♠♣';
                 const columns = Math.floor(window.innerWidth / 20);
@@ -1021,7 +989,7 @@
             }
 
 
-           
+            
             function enhanceSoundVisualizer() {
                 const soundBars = document.querySelectorAll('.sound-bar');
                 
@@ -1052,7 +1020,7 @@
             function activateSecretMode() {
                 document.body.style.filter = 'hue-rotate(180deg) saturate(2)';
                 
-               
+                
                 for (let i = 0; i < 50; i++) {
                     const explosion = document.createElement('div');
                     explosion.style.position = 'fixed';
@@ -1082,7 +1050,7 @@
                 }, 5000);
             }
 
-            // Initialize all effects
+            
             function initializeEffects() {
                 createParticles();
                 createMatrixRain();
@@ -1096,7 +1064,7 @@
                 setTimeout(handleScrollAnimations, 100);
             }
 
-          
+            
             function init() {
                 initializeEffects();
             }
@@ -1113,7 +1081,7 @@
                 document.getElementById('headerVisitCount').textContent = '2,203';
             }
 
-            // Start everything
+            
             trackVisit();
             init();
         });
