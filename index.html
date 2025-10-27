@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AHMET KLOWN - FIVEM KLOWN</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>AHMET KLOWN - Modern Müzik Çalar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,1069 +13,720 @@
         }
 
         :root {
-            --primary-red: #ff0040;
-            --secondary-red: #ff3366;
-            --accent-gold: #ffd700;
-            --dark-bg: #0a0a0a;
-            --darker-bg: #000000;
-            --text-light: #ffffff;
-            --text-gray: #cccccc;
-            --gradient-primary: linear-gradient(135deg, #ff0040, #ff3366, #ff6b6b);
-            --gradient-gold: linear-gradient(135deg, #ffd700, #ffed4e, #ffd700);
-            --gradient-dark: linear-gradient(135deg, #000000, #1a0000, #000000);
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #ffffff;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border: rgba(255, 255, 255, 0.1);
         }
 
         body {
-            background: var(--darker-bg);
-            color: var(--text-light);
-            font-family: 'Rajdhani', sans-serif;
+            background: var(--primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Animated Background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 0, 64, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 51, 102, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
-            animation: backgroundShift 20s ease-in-out infinite;
-            z-index: -1;
-        }
-
-        @keyframes backgroundShift {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            25% { transform: translateX(-20px) translateY(-10px); }
-            50% { transform: translateX(20px) translateY(10px); }
-            75% { transform: translateX(-10px) translateY(20px); }
-        }
-
-        /* Particle System */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--primary-red);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
+            padding: 0 40px;
         }
 
+        /* Header */
         .header {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-            padding: 40px 0;
-        }
-
-        .visitor-counter {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(0, 0, 0, 0.9);
-            padding: 15px 20px;
-            border-radius: 30px;
-            border: 2px solid var(--primary-red);
-            font-size: 1.1rem;
-            color: var(--primary-red);
-            z-index: 1000;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 8px 32px rgba(255, 0, 64, 0.3);
-            animation: counterPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes counterPulse {
-            0%, 100% { box-shadow: 0 8px 32px rgba(255, 0, 64, 0.3); }
-            50% { box-shadow: 0 8px 32px rgba(255, 0, 64, 0.6), 0 0 20px rgba(255, 0, 64, 0.4); }
-        }
-
-        .eye-icon {
-            width: 20px;
-            height: 20px;
-            fill: var(--primary-red);
-            animation: eyeBlink 4s ease-in-out infinite;
-        }
-
-        @keyframes eyeBlink {
-            0%, 90%, 100% { transform: scaleY(1); }
-            95% { transform: scaleY(0.1); }
-        }
-
-        .title {
-            font-family: 'Orbitron', monospace;
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: var(--primary-red); 
-            text-shadow: 0 0 30px rgba(255, 0, 64, 0.5);
-            animation: titleGlow 3s ease-in-out infinite alternate;
-            position: relative;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-
-        @keyframes titleGlow {
-            from { 
-                text-shadow: 0 0 30px rgba(255, 0, 64, 0.5);
-                transform: scale(1);
-            }
-            to { 
-                text-shadow: 0 0 50px rgba(255, 0, 64, 0.8), 0 0 80px rgba(255, 0, 64, 0.3);
-                transform: scale(1.02);
-            }
-        }
-
-        .subtitle {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--accent-gold);
-            margin-bottom: 30px;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-            animation: subtitleFloat 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes subtitleFloat {
-            from { transform: translateY(0); }
-            to { transform: translateY(-5px); }
-        }
-
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin: 60px 0;
-            perspective: 1000px;
-        }
-
-        .image-card {
-            text-align: center;
-            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 0, 64, 0.2);
-        }
-
-        .image-card::before {
-            content: '';
-            position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: var(--gradient-primary);
-            border-radius: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .image-card:hover {
-            transform: translateY(-20px) rotateX(10deg) rotateY(5deg);
-            box-shadow: 0 25px 50px rgba(255, 0, 64, 0.4);
-        }
-
-        .image-card:hover::before {
-            opacity: 0.1;
-        }
-
-        .image-card img {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: 15px;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .image-card:hover img {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 0, 64, 0.3);
-        }
-
-        .image-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-top: 20px;
-            color: var(--accent-gold);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-            animation: titlePulse 2s ease-in-out infinite;
-        }
-
-        @keyframes titlePulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .content-section {
-            margin: 80px 0;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 25px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 0, 64, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .content-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient-primary);
-            animation: sectionGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes sectionGlow {
-            0% { left: -100%; }
-            50% { left: 100%; }
-            100% { left: 100%; }
-        }
-
-        .section-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-align: center;
-            position: relative;
-            animation: sectionTitleGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes sectionTitleGlow {
-            from { text-shadow: 0 0 20px rgba(255, 0, 64, 0.3); }
-            to { text-shadow: 0 0 40px rgba(255, 0, 64, 0.6); }
-        }
-
-        .section-text {
-            color: var(--text-gray);
-            line-height: 2;
-            margin-bottom: 25px;
-            font-size: 1.3rem;
-            text-align: center;
-            font-weight: 400;
-            animation: textFadeIn 1s ease-out;
-        }
-
-        @keyframes textFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .feature-list li {
-            padding: 20px;
-            color: var(--text-light);
-            font-size: 1.2rem;
-            font-weight: 500;
-            background: rgba(255, 0, 64, 0.1);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 0, 64, 0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-list li::before {
-            content: '★';
-            color: var(--accent-gold);
-            margin-right: 10px;
-            font-size: 1.5rem;
-            animation: starTwinkle 2s ease-in-out infinite;
-        }
-
-        @keyframes starTwinkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
-        }
-
-        .feature-list li:hover {
-            background: rgba(255, 0, 64, 0.2);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 0, 64, 0.3);
-        }
-
-        .cta-button {
-            background: var(--gradient-primary);
-            color: var(--text-light);
-            border: none;
-            padding: 18px 35px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            border-radius: 50px;
-            cursor: pointer;
-            margin: 15px 10px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 8px 25px rgba(255, 0, 64, 0.3);
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(255, 0, 64, 0.5);
-        }
-
-        .cta-button:active {
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        .button-container {
-            text-align: center;
-            margin: 50px 0;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 40px;
-            border-top: 2px solid var(--primary-red);
-            color: var(--text-gray);
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 25px 25px 0 0;
-            backdrop-filter: blur(10px);
-        }
-
-        .welcome-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            z-index: 9999;
-            cursor: pointer;
-            animation: overlayFadeIn 1s ease-out;
+            padding: 24px 40px;
         }
 
-        @keyframes overlayFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .welcome-message {
-            background: var(--gradient-dark);
-            border: 3px solid var(--primary-red);
-            border-radius: 30px;
-            padding: 60px;
-            text-align: center;
-            color: var(--text-light);
-            font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
-            font-weight: 900;
-            text-shadow: 0 0 30px var(--primary-red);
-            animation: welcomeGlow 2s ease-in-out infinite alternate;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .welcome-message::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent, var(--primary-red), transparent);
-            animation: rotate 3s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes welcomeGlow {
-            from { 
-                text-shadow: 0 0 30px var(--primary-red);
-                transform: scale(1);
-            }
-            to { 
-                text-shadow: 0 0 50px var(--primary-red), 0 0 80px var(--primary-red);
-                transform: scale(1.05);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .title {
-                font-size: 3rem;
-            }
-            
-            .subtitle {
-                font-size: 1.4rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .image-gallery {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .feature-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .welcome-message {
-                font-size: 1.8rem;
-                padding: 40px;
-            }
-        }
-
-       
-        .matrix-rain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.1;
-        }
-
-        .matrix-column {
-            position: absolute;
-            top: -100%;
-            color: var(--primary-red);
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            line-height: 14px;
-            animation: matrixFall linear infinite;
-        }
-
-        @keyframes matrixFall {
-            to { top: 100%; }
-        }
-
-        
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--darker-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: opacity 1s ease-out;
-        }
-
-        .loading-content {
-            text-align: center;
-            color: var(--primary-red);
-            font-family: 'Orbitron', monospace;
-        }
-
-        .loading-spinner {
-            width: 80px;
-            height: 80px;
-            border: 4px solid rgba(255, 0, 64, 0.1);
-            border-left: 4px solid var(--primary-red);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .loading-text {
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
-            margin-bottom: 10px;
-            animation: loadingPulse 1.5s ease-in-out infinite;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
-        @keyframes loadingPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .visitor-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--secondary);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            border: 1px solid var(--border);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 80px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 48px;
+        }
+
+        /* Music Player */
+        .player-section {
+            padding: 80px 0;
+        }
+
+        .player-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--secondary);
+            border-radius: 24px;
+            padding: 48px;
+            border: 1px solid var(--border);
+        }
+
+        .album-art {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 16px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border: 1px solid var(--border);
+        }
+
+        .track-info {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .track-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .track-artist {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-container {
+            margin-bottom: 32px;
         }
 
         .progress-bar {
-            width: 300px;
+            width: 100%;
             height: 4px;
-            background: rgba(255, 0, 64, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 2px;
             overflow: hidden;
-            margin: 20px auto;
+            margin-bottom: 12px;
+            cursor: pointer;
         }
 
         .progress-fill {
             height: 100%;
-            background: var(--gradient-primary);
+            background: var(--accent);
             width: 0%;
-            transition: width 0.3s ease;
+            transition: width 0.1s linear;
         }
 
-        .sound-visualizer {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
+        .time-display {
             display: flex;
-            align-items: end;
-            gap: 2px;
-            z-index: 1000;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
         }
 
-        .sound-bar {
-            width: 3px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
-            animation: soundWave 1s ease-in-out infinite;
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
         }
 
-        @keyframes soundWave {
-            0%, 100% { height: 10px; }
-            50% { height: 30px; }
+        .control-btn {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Explosion Animation for Easter Egg */
-        @keyframes explode {
-            0% {
-                transform: translate(-50%, -50%) scale(0);
-                opacity: 1;
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .play-btn {
+            width: 64px;
+            height: 64px;
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .play-btn:hover {
+            background: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 64px;
+            letter-spacing: -0.02em;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .gallery-card {
+            background: var(--secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .gallery-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        }
+
+        .gallery-content {
+            padding: 24px;
+        }
+
+        .gallery-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .gallery-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 48px;
+            margin-top: 48px;
+        }
+
+        .content-card {
+            text-align: center;
+        }
+
+        .content-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .content-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Features List */
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .feature-item {
+            padding: 32px;
+            background: var(--secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .feature-item::before {
+            content: '—';
+            display: block;
+            margin-bottom: 16px;
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+
+        /* CTA Buttons */
+        .cta-section {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 48px;
+        }
+
+        .cta-btn {
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cta-btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+        }
+
+        .cta-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .cta-btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
             }
-            100% {
-                transform: translate(-50%, -50%) translate(var(--dx, 0), var(--dy, 0)) scale(0.5);
+
+            .nav {
+                padding: 20px 24px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .player-container {
+                padding: 32px 24px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Smooth Animations */
+        @keyframes fadeIn {
+            from {
                 opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--darker-bg);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient-primary);
-            border-radius: 6px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--gradient-gold);
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
         }
     </style>
-    
-    <script>
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            alert('Bu site korumalıdır!');
-            return false;
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' || 
-                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
-                (e.ctrlKey && e.key === 'u') ||
-                (e.ctrlKey && e.key === 's') ||
-                (e.ctrlKey && e.key === 'a')) {
-                e.preventDefault();
-                alert('Bu site korumalıdır!');
-                return false;
-            }
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.key === 'u') {
-                e.preventDefault();
-                alert('Bu site korumalıdır!');
-                return false;
-            }
-        });
-
-        document.onselectstart = function() {
-            return false;
-        };
-
-        document.ondragstart = function() {
-            return false;
-        };
-    </script>
 </head>
 <body>
-    
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <div class="loading-text">AHMET KLOWN YÜKLENİYOR...</div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">AHMET KLOWN</div>
+            <ul class="nav-links">
+                <li><a href="#player">Müzik</a></li>
+                <li><a href="#gallery">Galeri</a></li>
+                <li><a href="#about">Hakkında</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+            <div class="visitor-badge">
+                <span>👁</span>
+                <span id="visitCount">2,203</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title fade-in">FIVEM KLOWN</h1>
+            <p class="hero-subtitle fade-in">Vanator Pack'in Sahibi — Zengin Zübbe</p>
+        </div>
+    </section>
+
+    <!-- Music Player Section -->
+    <section class="player-section" id="player">
+        <div class="container">
+            <div class="player-container fade-in">
+                <div class="album-art">🎵</div>
+                <div class="track-info">
+                    <h2 class="track-title">Ascension</h2>
+                    <p class="track-artist">Sho</p>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">3:45</span>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button class="control-btn" id="prevBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                            <line x1="5" y1="19" x2="5" y2="5"></line>
+                        </svg>
+                    </button>
+                    <button class="control-btn play-btn" id="playBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </button>
+                    <button class="control-btn" id="nextBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                            <line x1="19" y1="5" x2="19" y2="19"></line>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="matrix-rain" id="matrixRain"></div>
-    <div class="particles" id="particles"></div>
-
-    <div class="sound-visualizer" id="soundVisualizer">
-        <div class="sound-bar" style="animation-delay: 0s;"></div>
-        <div class="sound-bar" style="animation-delay: 0.1s;"></div>
-        <div class="sound-bar" style="animation-delay: 0.2s;"></div>
-        <div class="sound-bar" style="animation-delay: 0.3s;"></div>
-        <div class="sound-bar" style="animation-delay: 0.4s;"></div>
-        <div class="sound-bar" style="animation-delay: 0.5s;"></div>
-    </div>
-
-    <div class="container">
-        <div class="visitor-counter">
-            <svg class="eye-icon" viewBox="0 0 24 24">
-                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
-            </svg>
-            <span id="headerVisitCount">Yükleniyor...</span>
-        </div>
-
-        <div class="header">
-            <h1 class="title">AHMET KLOWN</h1>
-            <p class="subtitle">FIVEM KLOWN - ZENGİN ZÜBBE</p>
-        </div>
-
-        <div class="image-gallery">
-            <div class="image-card">
-                <img src="IMG_9690.jpg" alt="Ahmet Klovn 1">
-                <div class="image-title">KUMARHANE GELİRİ 1</div>
-            </div>
-        </div>
-
-        <div class="content-section">
-            <h2 class="section-title">GERCEK DOSTLARIM</h2>
-            <div class="image-gallery">
-                <div class="image-card">
-                    <img src="cagri.jpg" alt="Cagri">
-                </div>
-                <div class="image-card">
-                    <img src="efe.jpg" alt="Efe">
-                </div>
-                <div class="image-card">
-                    <img src="hamza.jpg" alt="Hamza">
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Kumarhane Geliri</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Gelir Raporu 1</h3>
+                        <p class="gallery-description">Vanator Pack'in başarı hikayesi</p>
+                    </div>
                 </div>
             </div>
-            <p class="section-text">
-                En iyi dostlarım çağrı efe hamzadır.
-            </p>
-        </div>
 
-        <div class="content-section">
-            <h2 class="section-title">KLOWN KİMDİR?</h2>
-            <p class="section-text">
-                Ahmet Klown, fivem sunucusunda varolmuş efsanevi bir karakter 
-                Vanator Pack in sahibi dahi,milyoner,hayırsever,zampara.
-            </p>
+            <h2 class="section-title">Gerçek Dostlarım</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Çağrı</h3>
+                        <p class="gallery-description">En iyi dostlarımdan</p>
+                    </div>
+                </div>
+                <div class="gallery-card fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Efe</h3>
+                        <p class="gallery-description">En iyi dostlarımdan</p>
+                    </div>
+                </div>
+                <div class="gallery-card fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Hamza</h3>
+                        <p class="gallery-description">En iyi dostlarımdan</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="content-section">
-            <h2 class="section-title">KLOWN'UN ÖZELLİKLERİ</h2>
-            <ul class="feature-list">
-                <li>Vanator Pack'in sahibi</li>
-                <li>FİVEM TR'nin best aimine sahip</li>
-                <li>Kumarhane gelirlerini gizliyor</li>
-                <li>Piyasadaki en güçlü kişi</li>
-                <li>FİVEM sunucularının kralı</li>
+    <!-- About Section -->
+    <section class="content-section" id="about">
+        <div class="container">
+            <h2 class="section-title">Klown Kimdir?</h2>
+            <div class="content-grid">
+                <div class="content-card fade-in">
+                    <div class="content-number">01</div>
+                    <p class="content-text">Ahmet Klown, FiveM sunucusunda var olmuş efsanevi bir karakter. Vanator Pack'in sahibi, milyoner, hayırsever ve zampara.</p>
+                </div>
+                <div class="content-card fade-in">
+                    <div class="content-number">02</div>
+                    <p class="content-text">FiveM TR'nin en iyi aimine sahip. Kumarhane gelirlerini gizliyor ve piyasadaki en güçlü kişi.</p>
+                </div>
+                <div class="content-card fade-in">
+                    <div class="content-number">03</div>
+                    <p class="content-text">Bir zamanlar normal bir adam olan Ahmet, Vanator Pack'i açmaya karar verdi, aimini geliştirdi ve FiveM piyasasının en iyisi oldu.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 80px;">Özellikler</h2>
+            <ul class="features-list">
+                <li class="feature-item fade-in">Vanator Pack'in sahibi</li>
+                <li class="feature-item fade-in">FiveM TR'nin best aimine sahip</li>
+                <li class="feature-item fade-in">Kumarhane gelirlerini gizliyor</li>
+                <li class="feature-item fade-in">Piyasadaki en güçlü kişi</li>
+                <li class="feature-item fade-in">FiveM sunucularının kralı</li>
             </ul>
         </div>
+    </section>
 
-        <div class="content-section">
-            <h2 class="section-title">KLOWN'UN HİKAYESİ</h2>
-            <p class="section-text">
-                Bir zamanlar normal bir adam olan Ahmet Vanator Pack'i açmaya karar verdi aimini geliştirdi ve fivem piyasasının en iyisi oldu
-            </p>
-        </div>
-
-        <div class="content-section">
-            <h2 class="section-title">TEŞEKKÜRLERİM</h2>
-            <p class="section-text">
-                Bu zamana kadar yanımda olan tüm vanator pack yetkilileri özellikle oç jef ve denizi çok seviyorum teşekkürlerimi iletiyorum
-            </p>
-        </div>
-
-        <div class="content-section">
-            <h2 class="section-title">KATIL</h2>
-            <p class="section-text">
-                Sen de KLOWN gibi güçlü olmak ister misin? O zaman hemen discorda katıl
-            </p>
-            <div class="button-container">
-                <button class="cta-button" onclick="window.open('https://discord.gg/vanatorpack', '_blank')">HEMEN KATIL</button>
-                <button class="cta-button" onclick="window.open('https://bigpara.hurriyet.com.tr/altin', '_blank')">ZENGİN OL</button>
-                <button class="cta-button" onclick="window.open('https://www.tiktok.com/@fivemmklown', '_blank')">TIKTOK</button>
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Katıl</h2>
+            <p class="hero-subtitle">Sen de KLOWN gibi güçlü olmak ister misin?</p>
+            <div class="cta-buttons">
+                <a href="https://discord.gg/vanatorpack" target="_blank" class="cta-btn cta-btn-primary">Discord'a Katıl</a>
+                <a href="https://www.tiktok.com/@fivemmklown" target="_blank" class="cta-btn cta-btn-secondary">TikTok</a>
+                <a href="https://bigpara.hurriyet.com.tr/altin" target="_blank" class="cta-btn cta-btn-secondary">Zengin Ol</a>
             </div>
         </div>
+    </section>
 
-        <div class="footer">
-            <p>© 2025 AHMET KLOWN - FIVEM KLOWN | Tüm hakları saklıdır.</p>
-            <p>Bu site denizloki tarafından ahmete şaka amaçlı hazırlanmıştır vanator packe gelin</p>
-            <p>made by denizloki ❤️ klown</p>
-            <p>Site görüntülenme: <span id="visitCount">Yükleniyor...</span></p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 Ahmet Klown — Tüm hakları saklıdır</p>
+                <ul class="footer-links">
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">TikTok</a></li>
+                    <li><a href="#">İletişim</a></li>
+                </ul>
+            </div>
+            <p style="margin-top: 24px; opacity: 0.6;">Made by denizloki ❤️ klown</p>
         </div>
-    </div>
-
-    <div class="welcome-overlay" id="welcomeOverlay">
-        <div class="welcome-message">
-            AHMET'İN ŞAHSİ BLOGUNA HOŞ GELDİN
-        </div>
-    </div>
+    </footer>
 
     <audio id="backgroundMusic" loop>
         <source src="SpotiDownloader.com - ascension - sho.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const audio = document.getElementById('backgroundMusic');
-            const loadingScreen = document.getElementById('loadingScreen');
-            const progressFill = document.getElementById('progressFill');
-            
-            audio.volume = 0.3;
-            
-            
-            let progress = 0;
-            const loadingInterval = setInterval(() => {
-                progress += Math.random() * 15 + 5;
-                if (progress > 100) progress = 100;
-                
-                progressFill.style.width = progress + '%';
-                
-                if (progress >= 100) {
-                    clearInterval(loadingInterval);
-                    setTimeout(() => {
-                        loadingScreen.style.opacity = '0';
-                        setTimeout(() => {
-                            loadingScreen.style.display = 'none';
-                            initializeEffects();
-                        }, 1000);
-                    }, 500);
-                }
-            }, 200);
-            
-            function playMusic() {
-                audio.play().catch(function(error) {
-                    console.log('Müzik çalınamadı:', error);
-                });
+        // Music Player Functionality
+        const audio = document.getElementById('backgroundMusic');
+        const playBtn = document.getElementById('playBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressFill = document.getElementById('progressFill');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationEl = document.getElementById('duration');
+
+        let isPlaying = false;
+
+        audio.volume = 0.3;
+
+        playBtn.addEventListener('click', togglePlay);
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+            } else {
+                audio.play();
+                playBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
             }
-            
-            const welcomeOverlay = document.getElementById('welcomeOverlay');
-            
-            welcomeOverlay.addEventListener('click', function() {
-                welcomeOverlay.style.display = 'none';
-                playMusic();
-            });
-            
-            document.addEventListener('click', playMusic, { once: true });
-            document.addEventListener('touchstart', playMusic, { once: true });
+            isPlaying = !isPlaying;
+        }
 
-            // Particle System
-            function createParticles() {
-                const particlesContainer = document.getElementById('particles');
-                const particleCount = 50;
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    
-                    // Random positioning
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.top = Math.random() * 100 + '%';
-                    
-                    
-                    particle.style.animationDelay = Math.random() * 6 + 's';
-                    particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                    
-                    
-                    const size = Math.random() * 3 + 1;
-                    particle.style.width = size + 'px';
-                    particle.style.height = size + 'px';
-                    
-                    
-                    const colors = ['#ff0040', '#ff3366', '#ffd700', '#ff6b6b'];
-                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    
-                    particlesContainer.appendChild(particle);
-                }
-            }
+        audio.addEventListener('timeupdate', updateProgress);
+        audio.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = formatTime(audio.duration);
+        });
 
-           
-            function handleScrollAnimations() {
-                const sections = document.querySelectorAll('.content-section');
-                const imageCards = document.querySelectorAll('.image-card');
-                
-                sections.forEach((section, index) => {
-                    const rect = section.getBoundingClientRect();
-                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                    
-                    if (isVisible) {
-                        section.style.animation = `textFadeIn 1s ease-out ${index * 0.2}s both`;
-                    }
-                });
-                
-                imageCards.forEach((card, index) => {
-                    const rect = card.getBoundingClientRect();
-                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                    
-                    if (isVisible) {
-                        card.style.animation = `textFadeIn 0.8s ease-out ${index * 0.1}s both`;
-                    }
-                });
-            }
+        function updateProgress() {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = progress + '%';
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+        }
 
-           
-            function handleMouseMovement(e) {
-                const particles = document.querySelectorAll('.particle');
-                const mouseX = e.clientX / window.innerWidth;
-                const mouseY = e.clientY / window.innerHeight;
-                
-                particles.forEach((particle, index) => {
-                    const speed = (index % 3 + 1) * 0.5;
-                    const x = (mouseX - 0.5) * speed * 50;
-                    const y = (mouseY - 0.5) * speed * 50;
-                    
-                    particle.style.transform = `translate(${x}px, ${y}px)`;
-                });
-            }
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
 
-            
-            function enhanceButtons() {
-                const buttons = document.querySelectorAll('.cta-button');
-                
-                buttons.forEach(button => {
-                    button.addEventListener('mouseenter', function() {
-                        this.style.transform = 'translateY(-8px) scale(1.08)';
-                        this.style.boxShadow = '0 20px 40px rgba(255, 0, 64, 0.6)';
-                    });
-                    
-                    button.addEventListener('mouseleave', function() {
-                        this.style.transform = 'translateY(0) scale(1)';
-                        this.style.boxShadow = '0 8px 25px rgba(255, 0, 64, 0.3)';
-                    });
-                    
-                    button.addEventListener('click', function() {
-                      const ripple = document.createElement('div');
-                        ripple.style.position = 'absolute';
-                        ripple.style.borderRadius = '50%';
-                        ripple.style.background = 'rgba(255, 255, 255, 0.6)';
-                        ripple.style.transform = 'scale(0)';
-                        ripple.style.animation = 'ripple 0.6s linear';
-                        ripple.style.left = '50%';
-                        ripple.style.top = '50%';
-                        ripple.style.width = '20px';
-                        ripple.style.height = '20px';
-                        ripple.style.marginLeft = '-10px';
-                        ripple.style.marginTop = '-10px';
-                        
-                        this.appendChild(ripple);
-                        
-                        setTimeout(() => {
-                            ripple.remove();
-                        }, 600);
-                    });
-                });
-            }
+        progressBar.addEventListener('click', (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = percent * audio.duration;
+        });
 
-              const style = document.createElement('style');
-            style.textContent = `
-                @keyframes ripple {
-                    to {
-                        transform: scale(4);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-              function createMatrixRain() {
-                const matrixContainer = document.getElementById('matrixRain');
-                const characters = '01AHMETKLOWN★♦♠♣';
-                const columns = Math.floor(window.innerWidth / 20);
-                
-                for (let i = 0; i < columns; i++) {
-                    const column = document.createElement('div');
-                    column.className = 'matrix-column';
-                    column.style.left = i * 20 + 'px';
-                    column.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                    column.style.animationDelay = Math.random() * 2 + 's';
-                    
-                    let text = '';
-                    for (let j = 0; j < 20; j++) {
-                        text += characters[Math.floor(Math.random() * characters.length)] + '<br>';
-                    }
-                    column.innerHTML = text;
-                    
-                    matrixContainer.appendChild(column);
-                }
-            }
-
-
-            // Enhanced Sound Visualizer
-            function enhanceSoundVisualizer() {
-                const soundBars = document.querySelectorAll('.sound-bar');
-                
-                setInterval(() => {
-                    soundBars.forEach((bar, index) => {
-                        const height = Math.random() * 40 + 10;
-                        bar.style.height = height + 'px';
-                        bar.style.animationDelay = (index * 0.1) + 's';
-                    });
-                }, 300);
-            }
-
-            // L Key Easter Egg
-            document.addEventListener('keydown', function(e) {
-                if (e.keyCode === 76 || e.key === 'l' || e.key === 'L') {
-                    activateSecretMode();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
+        }, observerOptions);
 
-            function activateSecretMode() {
-                document.body.style.filter = 'hue-rotate(180deg) saturate(2)';
-                
-                // Create explosion effect
-                for (let i = 0; i < 50; i++) {
-                    const explosion = document.createElement('div');
-                    explosion.style.position = 'fixed';
-                    explosion.style.left = '50%';
-                    explosion.style.top = '50%';
-                    explosion.style.width = '4px';
-                    explosion.style.height = '4px';
-                    explosion.style.background = '#ffd700';
-                    explosion.style.borderRadius = '50%';
-                    explosion.style.pointerEvents = 'none';
-                    explosion.style.zIndex = '9999';
-                    
-                    const angle = (i / 50) * Math.PI * 2;
-                    const velocity = Math.random() * 300 + 100;
-                    
-                    explosion.style.animation = `
-                        explode 2s ease-out forwards
-                    `;
-                    
-                    document.body.appendChild(explosion);
-                    
-                    setTimeout(() => explosion.remove(), 2000);
-                }
-                
-                setTimeout(() => {
-                    document.body.style.filter = 'none';
-                }, 5000);
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Disable right-click and keyboard shortcuts
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                (e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.key === 's')) {
+                e.preventDefault();
             }
-
-            // Initialize all effects
-            function initializeEffects() {
-                createParticles();
-                createMatrixRain();
-                enhanceSoundVisualizer();
-                enhanceButtons();
-                
-                window.addEventListener('scroll', handleScrollAnimations);
-                document.addEventListener('mousemove', handleMouseMovement);
-                
-                // Initial animation trigger
-                setTimeout(handleScrollAnimations, 100);
-            }
-
-            // Legacy init function for compatibility
-            function init() {
-                initializeEffects();
-            }
-
-            function trackVisit() {
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'page_view', {
-                        page_title: 'AHMET KLOWN - FIVEM KLOWN',
-                        page_location: window.location.href
-                    });
-                }
-                
-                document.getElementById('visitCount').textContent = '2,203';
-                document.getElementById('headerVisitCount').textContent = '2,203';
-            }
-
-            // Start everything
-            trackVisit();
-            init();
         });
     </script>
 </body>
