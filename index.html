@@ -3,730 +3,819 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AHMET KLOWN - Modern Fivem Dominantörü</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>AHMET KLOWN - FIVEM KLOWN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* <CHANGE> Modern, professional color palette and design system */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         :root {
-            --primary: #0a0a0a;
-            --secondary: #1a1a1a;
-            --accent: #ffffff;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --border: rgba(255, 255, 255, 0.1);
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --bg-dark: #0f0f1a;
+            --bg-darker: #080810;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: rgba(0, 0, 0, 0.3);
         }
-
         body {
-            background: var(--primary);
-            color: var(--text-primary);
+            background: var(--bg-darker);
+            color: var(--text-light);
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
             line-height: 1.6;
         }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        /* Header */
-        .header {
+        /* <CHANGE> Subtle gradient background instead of heavy animations */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 40px;
-        }
-
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .visitor-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--secondary);
-            border-radius: 20px;
-            font-size: 0.875rem;
-            border: 1px solid var(--border);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 160px 0 80px;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 5rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
-            line-height: 1.1;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            margin-bottom: 48px;
-        }
-
-        /* Music Player */
-        .player-section {
-            padding: 80px 0;
-        }
-
-        .player-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--secondary);
-            border-radius: 24px;
-            padding: 48px;
-            border: 1px solid var(--border);
-        }
-
-        .album-art {
             width: 100%;
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            border-radius: 16px;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            border: 1px solid var(--border);
-        }
-
-        .track-info {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .track-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .track-artist {
-            font-size: 1rem;
-            color: var(--text-secondary);
-        }
-
-        .progress-container {
-            margin-bottom: 32px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            overflow: hidden;
-            margin-bottom: 12px;
-            cursor: pointer;
-        }
-
-        .progress-fill {
             height: 100%;
-            background: var(--accent);
-            width: 0%;
-            transition: width 0.1s linear;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
+            z-index: -1;
         }
-
-        .time-display {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .control-btn {
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            cursor: pointer;
-            padding: 12px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .control-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .play-btn {
-            width: 64px;
-            height: 64px;
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        .play-btn:hover {
-            background: var(--accent);
-            transform: scale(1.05);
-        }
-
-        /* Gallery Section */
-        .gallery-section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 64px;
-            letter-spacing: -0.02em;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
-            margin-bottom: 80px;
-        }
-
-        .gallery-card {
-            background: var(--secondary);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .gallery-image {
+        /* <CHANGE> Minimal particle system */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            aspect-ratio: 4/3;
-            object-fit: cover;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.3;
         }
-
-        .gallery-content {
-            padding: 24px;
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
         }
-
-        .gallery-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            50% { transform: translateY(-80px) translateX(20px); opacity: 0.6; }
         }
-
-        .gallery-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
         }
-
-        /* Content Section */
-        .content-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 48px;
-            margin-top: 48px;
-        }
-
-        .content-card {
+        /* <CHANGE> Clean, modern header design */
+        .header {
             text-align: center;
+            margin-bottom: 80px;
+            padding: 60px 0;
         }
-
-        .content-number {
+        /* <CHANGE> Modern visitor counter with glassmorphism */
+        .visitor-counter {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-card);
+            padding: 12px 20px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 24px var(--shadow);
+            transition: all 0.3s ease;
+        }
+        .visitor-counter:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+        }
+        .eye-icon {
+            width: 18px;
+            height: 18px;
+            fill: var(--primary);
+        }
+        /* <CHANGE> Modern typography with Space Grotesk */
+        .title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 700;
             margin-bottom: 16px;
-            opacity: 0.5;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
         }
-
-        .content-text {
-            color: var(--text-secondary);
+        /* <CHANGE> Subtle subtitle styling */
+        .subtitle {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+        /* <CHANGE> Modern grid layout with cards */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin: 60px 0;
+        }
+        /* <CHANGE> Clean card design with subtle hover effects */
+        .image-card {
+            text-align: center;
+            transition: all 0.3s ease;
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .image-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+        .image-card img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .image-card:hover img {
+            transform: scale(1.02);
+        }
+        /* <CHANGE> Modern image title styling */
+        .image-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 16px;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+        }
+        /* <CHANGE> Clean section design */
+        .content-section {
+            margin: 60px 0;
+            padding: 48px;
+            background: var(--bg-card);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .content-section:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        /* <CHANGE> Modern section title */
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-light);
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+        /* <CHANGE> Readable body text */
+        .section-text {
+            color: var(--text-gray);
             line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.125rem;
+            text-align: center;
+            font-weight: 400;
         }
-
-        /* Features List */
-        .features-list {
+        /* <CHANGE> Modern feature list */
+        .feature-list {
             list-style: none;
+            padding: 0;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 48px;
+            gap: 16px;
         }
-
-        .feature-item {
-            padding: 32px;
-            background: var(--secondary);
+        .feature-list li {
+            padding: 20px 24px;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 500;
+            background: rgba(99, 102, 241, 0.05);
             border-radius: 12px;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
-
-        .feature-item:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-4px);
+        .feature-list li::before {
+            content: '→';
+            color: var(--accent);
+            margin-right: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
         }
-
-        .feature-item::before {
-            content: '—';
-            display: block;
-            margin-bottom: 16px;
-            font-size: 1.5rem;
-            opacity: 0.5;
+        .feature-list li:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+            transform: translateX(4px);
         }
-
-        /* CTA Buttons */
-        .cta-section {
-            text-align: center;
-            padding: 80px 0;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-top: 48px;
-        }
-
-        .cta-btn {
-            padding: 16px 32px;
+        /* <CHANGE> Modern button design */
+        .cta-button {
+            background: var(--primary);
+            color: var(--text-light);
+            border: none;
+            padding: 14px 32px;
             font-size: 1rem;
             font-weight: 600;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
+            margin: 12px 8px;
             transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
             font-family: 'Inter', sans-serif;
+            letter-spacing: 0.01em;
         }
-
-        .cta-btn-primary {
-            background: var(--accent);
-            color: var(--primary);
-            border: none;
-        }
-
-        .cta-btn-primary:hover {
+        .cta-button:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 24px rgba(99, 102, 241, 0.3);
         }
-
-        .cta-btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border);
+        .cta-button:active {
+            transform: translateY(0);
         }
-
-        .cta-btn-secondary:hover {
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Footer */
-        .footer {
-            border-top: 1px solid var(--border);
-            padding: 48px 0;
+        .button-container {
             text-align: center;
-            color: var(--text-secondary);
+            margin: 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        /* <CHANGE> Clean footer design */
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 48px 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            background: var(--bg-card);
+            border-radius: 24px 24px 0 0;
+            backdrop-filter: blur(20px);
+        }
+        .footer p {
+            margin: 8px 0;
             font-size: 0.875rem;
         }
-
-        .footer-content {
+        /* <CHANGE> Modern welcome overlay */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 8, 16, 0.95);
+            backdrop-filter: blur(40px);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
+            z-index: 9999;
+            cursor: pointer;
         }
-
-        .footer-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
+        .welcome-message {
+            background: var(--bg-card);
+            border: 1px solid var(--primary);
+            border-radius: 24px;
+            padding: 64px 48px;
+            text-align: center;
+            color: var(--text-light);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            backdrop-filter: blur(20px);
+            max-width: 600px;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
         }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--text-primary);
-        }
-
-        /* Responsive */
+        /* <CHANGE> Responsive design improvements */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 24px;
+            .title {
+                font-size: 2.5rem;
             }
-
-            .nav {
-                padding: 20px 24px;
+            .subtitle {
+                font-size: 1rem;
             }
-
-            .nav-links {
-                display: none;
+            .section-title {
+                font-size: 1.5rem;
             }
-
-            .hero-title {
-                font-size: 3rem;
+            .image-gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
-
-            .hero-subtitle {
-                font-size: 1.125rem;
+            .feature-list {
+                grid-template-columns: 1fr;
             }
-
-            .player-container {
+            .welcome-message {
+                font-size: 1.5rem;
+                padding: 48px 32px;
+                margin: 20px;
+            }
+            .content-section {
                 padding: 32px 24px;
             }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
+            .visitor-counter {
+                top: 16px;
+                right: 16px;
+                font-size: 0.75rem;
+                padding: 10px 16px;
             }
         }
-
-        /* Smooth Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* <CHANGE> Minimal matrix rain effect */
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.03;
         }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
+        .matrix-column {
+            position: absolute;
+            top: -100%;
+            color: var(--primary);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 12px;
+            animation: matrixFall linear infinite;
+        }
+        @keyframes matrixFall {
+            to { top: 100%; }
+        }
+        /* <CHANGE> Modern loading screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-darker);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+        .loading-content {
+            text-align: center;
+            color: var(--primary);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(99, 102, 241, 0.1);
+            border-left: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 24px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-text {
+            font-size: 1.125rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        .progress-bar {
+            width: 280px;
+            height: 3px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 24px auto;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        /* <CHANGE> Minimal sound visualizer */
+        .sound-visualizer {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            display: flex;
+            align-items: end;
+            gap: 3px;
+            z-index: 1000;
+            opacity: 0.5;
+        }
+        .sound-bar {
+            width: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            animation: soundWave 1s ease-in-out infinite;
+        }
+        @keyframes soundWave {
+            0%, 100% { height: 8px; }
+            50% { height: 24px; }
+        }
+        /* <CHANGE> Clean scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
         }
     </style>
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('Bu site korumalıdır!');
+            return false;
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.key === 's') ||
+                (e.ctrlKey && e.key === 'a')) {
+                e.preventDefault();
+                alert('Bu site korumalıdır!');
+                return false;
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+                alert('Bu site korumalıdır!');
+                return false;
+            }
+        });
+        document.onselectstart = function() {
+            return false;
+        };
+        document.ondragstart = function() {
+            return false;
+        };
+    </script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="logo">AHMET KLOWN</div>
-            <ul class="nav-links">
-                <li><a href="#player">Müzik</a></li>
-                <li><a href="#gallery">Galeri</a></li>
-                <li><a href="#about">Hakkında</a></li>
-                <li><a href="#contact">İletişim</a></li>
-            </ul>
-            <div class="visitor-badge">
-                <span>👁</span>
-                <span id="visitCount">2,203</span>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1 class="hero-title fade-in">FIVEM KLOWN</h1>
-            <p class="hero-subtitle fade-in">Vanator Pack'in Sahibi — Zengin Zübbe</p>
-        </div>
-    </section>
-
-    <!-- Music Player Section -->
-    <section class="player-section" id="player">
-        <div class="container">
-            <div class="player-container fade-in">
-                <div class="album-art">🎵</div>
-                <div class="track-info">
-                    <h2 class="track-title">Ascension</h2>
-                    <p class="track-artist">Sho</p>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-bar" id="progressBar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <div class="time-display">
-                        <span id="currentTime">0:00</span>
-                        <span id="duration">3:45</span>
-                    </div>
-                </div>
-                <div class="controls">
-                    <button class="control-btn" id="prevBtn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="19 20 9 12 19 4 19 20"></polygon>
-                            <line x1="5" y1="19" x2="5" y2="5"></line>
-                        </svg>
-                    </button>
-                    <button class="control-btn play-btn" id="playBtn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                        </svg>
-                    </button>
-                    <button class="control-btn" id="nextBtn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="5 4 15 12 5 20 5 4"></polygon>
-                            <line x1="19" y1="5" x2="19" y2="19"></line>
-                        </svg>
-                    </button>
-                </div>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">AHMET KLOWN YÜKLENİYOR...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Gallery Section -->
-    <section class="gallery-section" id="gallery">
-        <div class="container">
-            <h2 class="section-title">Kumarhane Geliri</h2>
-            <div class="gallery-grid">
-                <div class="gallery-card fade-in">
-                    <div class="gallery-image"></div>
-                    <div class="gallery-content">
-                        <h3 class="gallery-title">Gelir Raporu 1</h3>
-                        <p class="gallery-description">Vanator Pack'in başarı hikayesi</p>
-                    </div>
-                </div>
-            </div>
+    <div class="matrix-rain" id="matrixRain"></div>
+    <div class="particles" id="particles"></div>
 
-            <h2 class="section-title">Gerçek Dostlarım</h2>
-            <div class="gallery-grid">
-                <div class="gallery-card fade-in">
-                    <div class="gallery-image"></div>
-                    <div class="gallery-content">
-                        <h3 class="gallery-title">Çağrı</h3>
-                        <p class="gallery-description">En iyi dostlarımdan</p>
-                    </div>
-                </div>
-                <div class="gallery-card fade-in">
-                    <div class="gallery-image"></div>
-                    <div class="gallery-content">
-                        <h3 class="gallery-title">Efe</h3>
-                        <p class="gallery-description">En iyi dostlarımdan</p>
-                    </div>
-                </div>
-                <div class="gallery-card fade-in">
-                    <div class="gallery-image"></div>
-                    <div class="gallery-content">
-                        <h3 class="gallery-title">Hamza</h3>
-                        <p class="gallery-description">En iyi dostlarımdan</p>
-                    </div>
-                </div>
+    <div class="sound-visualizer" id="soundVisualizer">
+        <div class="sound-bar" style="animation-delay: 0s;"></div>
+        <div class="sound-bar" style="animation-delay: 0.1s;"></div>
+        <div class="sound-bar" style="animation-delay: 0.2s;"></div>
+        <div class="sound-bar" style="animation-delay: 0.3s;"></div>
+        <div class="sound-bar" style="animation-delay: 0.4s;"></div>
+        <div class="sound-bar" style="animation-delay: 0.5s;"></div>
+    </div>
+
+    <div class="container">
+        <div class="visitor-counter">
+            <svg class="eye-icon" viewBox="0 0 24 24">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
+            <span id="headerVisitCount">Yükleniyor...</span>
+        </div>
+
+        <div class="header">
+            <h1 class="title">AHMET KLOWN</h1>
+            <p class="subtitle">FIVEM KLOWN - ZENGİN ZÜBBE</p>
+        </div>
+
+        <div class="image-gallery">
+            <div class="image-card">
+                <img src="IMG_9690.jpg" alt="Ahmet Klovn 1">
+                <div class="image-title">KUMARHANE GELİRİ 1</div>
             </div>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section class="content-section" id="about">
-        <div class="container">
-            <h2 class="section-title">Klown Kimdir?</h2>
-            <div class="content-grid">
-                <div class="content-card fade-in">
-                    <div class="content-number">01</div>
-                    <p class="content-text">Ahmet Klown, FiveM sunucusunda var olmuş efsanevi bir karakter. Vanator Pack'in sahibi, milyoner, hayırsever ve zampara.</p>
+        <div class="content-section">
+            <h2 class="section-title">GERCEK DOSTLARIM</h2>
+            <div class="image-gallery">
+                <div class="image-card">
+                    <img src="cagri.jpg" alt="Cagri">
                 </div>
-                <div class="content-card fade-in">
-                    <div class="content-number">02</div>
-                    <p class="content-text">FiveM TR'nin en iyi aimine sahip. Kumarhane gelirlerini gizliyor ve piyasadaki en güçlü kişi.</p>
+                <div class="image-card">
+                    <img src="efe.jpg" alt="Efe">
                 </div>
-                <div class="content-card fade-in">
-                    <div class="content-number">03</div>
-                    <p class="content-text">Bir zamanlar normal bir adam olan Ahmet, Vanator Pack'i açmaya karar verdi, aimini geliştirdi ve FiveM piyasasının en iyisi oldu.</p>
+                <div class="image-card">
+                    <img src="hamza.jpg" alt="Hamza">
                 </div>
             </div>
+            <p class="section-text">
+                En iyi dostlarım çağrı efe hamzadır.
+            </p>
+        </div>
 
-            <h2 class="section-title" style="margin-top: 80px;">Özellikler</h2>
-            <ul class="features-list">
-                <li class="feature-item fade-in">Vanator Pack'in sahibi</li>
-                <li class="feature-item fade-in">FiveM TR'nin best aimine sahip</li>
-                <li class="feature-item fade-in">Kumarhane gelirlerini gizliyor</li>
-                <li class="feature-item fade-in">Piyasadaki en güçlü kişi</li>
-                <li class="feature-item fade-in">FiveM sunucularının kralı</li>
+        <div class="content-section">
+            <h2 class="section-title">KLOWN KİMDİR?</h2>
+            <p class="section-text">
+                Ahmet Klown, fivem sunucusunda varolmuş efsanevi bir karakter 
+                Vanator Pack in sahibi dahi,milyoner,hayırsever,zampara.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">KLOWN'UN ÖZELLİKLERİ</h2>
+            <ul class="feature-list">
+                <li>Vanator Pack'in sahibi</li>
+                <li>FİVEM TR'nin best aimine sahip</li>
+                <li>Kumarhane gelirlerini gizliyor</li>
+                <li>Piyasadaki en güçlü kişi</li>
+                <li>FİVEM sunucularının kralı</li>
             </ul>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Katıl</h2>
-            <p class="hero-subtitle">Sen de KLOWN gibi güçlü olmak ister misin?</p>
-            <div class="cta-buttons">
-                <a href="https://discord.gg/vanatorpack" target="_blank" class="cta-btn cta-btn-primary">Discord'a Katıl</a>
-                <a href="https://www.tiktok.com/@fivemmklown" target="_blank" class="cta-btn cta-btn-secondary">TikTok</a>
-                <a href="https://bigpara.hurriyet.com.tr/altin" target="_blank" class="cta-btn cta-btn-secondary">Zengin Ol</a>
+        <div class="content-section">
+            <h2 class="section-title">KLOWN'UN HİKAYESİ</h2>
+            <p class="section-text">
+                Bir zamanlar normal bir adam olan Ahmet Vanator Pack'i açmaya karar verdi aimini geliştirdi ve fivem piyasasının en iyisi oldu
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">TEŞEKKÜRLERİM</h2>
+            <p class="section-text">
+                Bu zamana kadar yanımda olan tüm vanator pack yetkilileri özellikle oç jef ve denizi çok seviyorum teşekkürlerimi iletiyorum
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">KATIL</h2>
+            <p class="section-text">
+                Sen de KLOWN gibi güçlü olmak ister misin? O zaman hemen discorda katıl
+            </p>
+            <div class="button-container">
+                <button class="cta-button" onclick="window.open('https://discord.gg/vanatorpack', '_blank')">HEMEN KATIL</button>
+                <button class="cta-button" onclick="window.open('https://bigpara.hurriyet.com.tr/altin', '_blank')">ZENGİN OL</button>
+                <button class="cta-button" onclick="window.open('https://www.tiktok.com/@fivemmklown', '_blank')">TIKTOK</button>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>© 2025 Ahmet Klown — Tüm hakları saklıdır</p>
-                <ul class="footer-links">
-                    <li><a href="#">Discord</a></li>
-                    <li><a href="#">TikTok</a></li>
-                    <li><a href="#">İletişim</a></li>
-                </ul>
-            </div>
-            <p style="margin-top: 24px; opacity: 0.6;">Made by denizloki ❤️ klown</p>
+        <div class="footer">
+            <p>© 2025 AHMET KLOWN - FIVEM KLOWN | Tüm hakları saklıdır.</p>
+            <p>Bu site denizloki tarafından ahmete şaka amaçlı hazırlanmıştır vanator packe gelin</p>
+            <p>made by denizloki ❤️ klown</p>
+            <p>Site görüntülenme: <span id="visitCount">Yükleniyor...</span></p>
         </div>
-    </footer>
+    </div>
+
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-message">
+            AHMET'İN ŞAHSİ BLOGUNA HOŞ GELDİN
+        </div>
+    </div>
 
     <audio id="backgroundMusic" loop>
         <source src="SpotiDownloader.com - ascension - sho.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        // Music Player Functionality
-        const audio = document.getElementById('backgroundMusic');
-        const playBtn = document.getElementById('playBtn');
-        const progressBar = document.getElementById('progressBar');
-        const progressFill = document.getElementById('progressFill');
-        const currentTimeEl = document.getElementById('currentTime');
-        const durationEl = document.getElementById('duration');
-
-        let isPlaying = false;
-
-        audio.volume = 0.3;
-
-        playBtn.addEventListener('click', togglePlay);
-
-        function togglePlay() {
-            if (isPlaying) {
-                audio.pause();
-                playBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
-            } else {
-                audio.play();
-                playBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('backgroundMusic');
+            const loadingScreen = document.getElementById('loadingScreen');
+            const progressFill = document.getElementById('progressFill');
+            audio.volume = 0.3;
+            let progress = 0;
+            const loadingInterval = setInterval(() => {
+                progress += Math.random() * 15 + 5;
+                if (progress > 100) progress = 100;
+                progressFill.style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(loadingInterval);
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                            initializeEffects();
+                        }, 1000);
+                    }, 500);
+                }
+            }, 200);
+            function playMusic() {
+                audio.play().catch(function(error) {
+                    console.log('Müzik çalınamadı:', error);
+                });
             }
-            isPlaying = !isPlaying;
-        }
-
-        audio.addEventListener('timeupdate', updateProgress);
-        audio.addEventListener('loadedmetadata', () => {
-            durationEl.textContent = formatTime(audio.duration);
-        });
-
-        function updateProgress() {
-            const progress = (audio.currentTime / audio.duration) * 100;
-            progressFill.style.width = progress + '%';
-            currentTimeEl.textContent = formatTime(audio.currentTime);
-        }
-
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins}:${secs.toString().padStart(2, '0')}`;
-        }
-
-        progressBar.addEventListener('click', (e) => {
-            const rect = progressBar.getBoundingClientRect();
-            const percent = (e.clientX - rect.left) / rect.width;
-            audio.currentTime = percent * audio.duration;
-        });
-
-        // Scroll Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+            const welcomeOverlay = document.getElementById('welcomeOverlay');
+            welcomeOverlay.addEventListener('click', function() {
+                welcomeOverlay.style.display = 'none';
+                playMusic();
+            });
+            document.addEventListener('click', playMusic, { once: true });
+            document.addEventListener('touchstart', playMusic, { once: true });
+            function createParticles() {
+                const particlesContainer = document.getElementById('particles');
+                const particleCount = 50;
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 6 + 's';
+                    particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    const size = Math.random() * 3 + 1;
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+                    const colors = ['#6366f1', '#f59e0b'];
+                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    particlesContainer.appendChild(particle);
+                }
+            }
+            function handleScrollAnimations() {
+                const sections = document.querySelectorAll('.content-section');
+                const imageCards = document.querySelectorAll('.image-card');
+                sections.forEach((section, index) => {
+                    const rect = section.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    if (isVisible) {
+                        section.style.animation = `textFadeIn 1s ease-out ${index * 0.2}s both`;
+                    }
+                });
+                imageCards.forEach((card, index) => {
+                    const rect = card.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    if (isVisible) {
+                        card.style.animation = `textFadeIn 0.8s ease-out ${index * 0.1}s both`;
+                    }
+                });
+            }
+            function handleMouseMovement(e) {
+                const particles = document.querySelectorAll('.particle');
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+                particles.forEach((particle, index) => {
+                    const speed = (index % 3 + 1) * 0.5;
+                    const x = (mouseX - 0.5) * speed * 50;
+                    const y = (mouseY - 0.5) * speed * 50;
+                    particle.style.transform = `translate(${x}px, ${y}px)`;
+                });
+            }
+            function enhanceButtons() {
+                const buttons = document.querySelectorAll('.cta-button');
+                buttons.forEach(button => {
+                    button.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-8px) scale(1.08)';
+                        this.style.boxShadow = '0 20px 40px rgba(99, 102, 241, 0.4)';
+                    });
+                    button.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0) scale(1)';
+                        this.style.boxShadow = 'none';
+                    });
+                    button.addEventListener('click', function() {
+                      const ripple = document.createElement('div');
+                        ripple.style.position = 'absolute';
+                        ripple.style.borderRadius = '50%';
+                        ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                        ripple.style.transform = 'scale(0)';
+                        ripple.style.animation = 'ripple 0.6s linear';
+                        ripple.style.left = '50%';
+                        ripple.style.top = '50%';
+                        ripple.style.width = '20px';
+                        ripple.style.height = '20px';
+                        ripple.style.marginLeft = '-10px';
+                        ripple.style.marginTop = '-10px';
+                        this.appendChild(ripple);
+                        setTimeout(() => {
+                            ripple.remove();
+                        }, 600);
+                    });
+                });
+            }
+              const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+              function createMatrixRain() {
+                const matrixContainer = document.getElementById('matrixRain');
+                const characters = '01AHMETKLOWN★♦♠♣';
+                const columns = Math.floor(window.innerWidth / 20);
+                for (let i = 0; i < columns; i++) {
+                    const column = document.createElement('div');
+                    column.className = 'matrix-column';
+                    column.style.left = i * 20 + 'px';
+                    column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    column.style.animationDelay = Math.random() * 2 + 's';
+                    let text = '';
+                    for (let j = 0; j < 20; j++) {
+                        text += characters[Math.floor(Math.random() * characters.length)] + '<br>';
+                    }
+                    column.innerHTML = text;
+                    matrixContainer.appendChild(column);
+                }
+            }
+            function enhanceSoundVisualizer() {
+                const soundBars = document.querySelectorAll('.sound-bar');
+                setInterval(() => {
+                    soundBars.forEach((bar, index) => {
+                        const height = Math.random() * 40 + 10;
+                        bar.style.height = height + 'px';
+                        bar.style.animationDelay = (index * 0.1) + 's';
+                    });
+                }, 300);
+            }
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode === 76 || e.key === 'l' || e.key === 'L') {
+                    activateSecretMode();
                 }
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Disable right-click and keyboard shortcuts
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || 
-                (e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.key === 's')) {
-                e.preventDefault();
+            function activateSecretMode() {
+                document.body.style.filter = 'hue-rotate(180deg) saturate(2)';
+                for (let i = 0; i < 50; i++) {
+                    const explosion = document.createElement('div');
+                    explosion.style.position = 'fixed';
+                    explosion.style.left = '50%';
+                    explosion.style.top = '50%';
+                    explosion.style.width = '4px';
+                    explosion.style.height = '4px';
+                    explosion.style.background = '#ffd700';
+                    explosion.style.borderRadius = '50%';
+                    explosion.style.pointerEvents = 'none';
+                    explosion.style.zIndex = '9999';
+                    const angle = (i / 50) * Math.PI * 2;
+                    const velocity = Math.random() * 300 + 100;
+                    explosion.style.animation = `
+                        explode 2s ease-out forwards
+                    `;
+                    document.body.appendChild(explosion);
+                    setTimeout(() => explosion.remove(), 2000);
+                }
+                setTimeout(() => {
+                    document.body.style.filter = 'none';
+                }, 5000);
             }
+            function initializeEffects() {
+                createParticles();
+                createMatrixRain();
+                enhanceSoundVisualizer();
+                enhanceButtons();
+                window.addEventListener('scroll', handleScrollAnimations);
+                document.addEventListener('mousemove', handleMouseMovement);
+                setTimeout(handleScrollAnimations, 100);
+            }
+            function init() {
+                initializeEffects();
+            }
+            function trackVisit() {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'page_view', {
+                        page_title: 'AHMET KLOWN - FIVEM KLOWN',
+                        page_location: window.location.href
+                    });
+                }
+                document.getElementById('visitCount').textContent = '2,203';
+                document.getElementById('headerVisitCount').textContent = '2,203';
+            }
+            trackVisit();
+            init();
         });
     </script>
 </body>
